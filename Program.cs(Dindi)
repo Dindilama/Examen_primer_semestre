@@ -1,0 +1,49 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ExamenLenguaje
+{
+    internal class Program
+    {
+        static void Presentacion()
+        {
+            Console.WriteLine("Desarrolladora: Dindi A. Lamadrid Cortina");
+            Console.WriteLine("Fecha: 06-09-2022");
+            Console.WriteLine("Grupo: Martes 18:15 - 21:25");
+            Console.WriteLine("Tema: Programacion orientada a objetos");
+        }
+        static void Main(string[] args)
+        {
+            Presentacion();
+            int opc, opc2;
+
+            Prestamo prestamo1 = new Prestamo();
+
+            Console.WriteLine("Desea ingresar datos? 1.SI  2.NO"); opc = int.Parse(Console.ReadLine());
+
+
+            while (opc == 1)
+            {
+                prestamo1.AddPrestamo();
+
+                Console.WriteLine("Desea hacer un prestamo? 1.SI  2.NO"); opc2 = int.Parse(Console.ReadLine());
+
+                if (opc2 == 1)
+                {
+                    prestamo1.CalPrestamo();
+                }
+
+                Console.WriteLine("Desea ingresar datos? 1.SI  2.NO");
+                opc = int.Parse(Console.ReadLine());
+            }
+
+            prestamo1.PlanPago();
+
+            Console.WriteLine("\nPresione la tecla Enter para finalizar...");
+            while (Console.ReadKey().Key != ConsoleKey.Enter) { }
+        }
+    }
+}

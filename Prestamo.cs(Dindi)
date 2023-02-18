@@ -1,0 +1,98 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ExamenLenguaje
+{
+    internal class Prestamo
+    {
+        private int idPrestamo;
+        private string cliente;
+        private double interes;
+        private int plazo;
+        private double vlrPrestamo;
+        private double totalPagar;
+
+        public Prestamo()
+        {
+
+        }
+
+        public Prestamo(int idPrestamo, string cliente, double interes, int plazo, double vlrPrestamo, double dscto, double totalPagar)
+        {
+            this.idPrestamo = idPrestamo;
+            this.cliente = cliente;
+            this.interes = interes;
+            this.plazo = plazo;
+            this.vlrPrestamo = vlrPrestamo;
+            TotalPagar = totalPagar;
+        }
+
+        public int IdPrestamo { get => idPrestamo; set => idPrestamo = value; }
+        public string Cliente { get => cliente; set => cliente = value; }
+        public double Interes { get => interes; set => interes = value; }
+        public int Plazo { get => plazo; set => plazo = value; }
+        public double VlrPrestamo { get => vlrPrestamo; set => vlrPrestamo = value; }
+        public double TotalPagar { get => totalPagar; set => totalPagar = value; }
+
+        public void AddPrestamo()
+        {
+            Console.WriteLine("----------------------------------------");
+            Console.WriteLine("        **ADICIONAR CLIENTE**        ");
+
+            Console.Write("\tCliente: ");
+            Cliente = Console.ReadLine();
+
+            Console.WriteLine("----------------------------------------");
+        }
+
+        public void CalPrestamo()
+        {
+            Console.WriteLine("----------------------------------------");
+            Console.WriteLine("        **PRESTAMO**        ");
+
+            Console.Write("\tIdentificacion del Prestamo: ");
+            IdPrestamo = int.Parse(Console.ReadLine());
+
+            Console.Write("\tValor del Prestamo: ");
+            VlrPrestamo = int.Parse(Console.ReadLine());
+
+            Console.Write("\tPlazo del prestamo: ");
+            Plazo = int.Parse(Console.ReadLine());
+
+            if (Plazo <= 3)
+            {
+                Interes = (VlrPrestamo * 2.9) - VlrPrestamo;
+                VlrPrestamo = VlrPrestamo + Interes;
+                TotalPagar = VlrPrestamo * Plazo;
+            }
+            else
+            {
+                Interes = (VlrPrestamo * 1.8) - VlrPrestamo;
+                VlrPrestamo = VlrPrestamo + Interes;
+                TotalPagar = VlrPrestamo * Plazo;
+            }
+
+            Console.WriteLine($"\tEl interes mensual es de: {Interes}");
+            Console.WriteLine($"\tValor del Prestamo en total es: {VlrPrestamo}");
+            Console.WriteLine($"\tEl total a pagar es: {TotalPagar}");
+
+            Console.WriteLine("----------------------------------------");
+        }
+
+        public void PlanPago()
+        {
+            Console.WriteLine("----------------------------------------");
+            Console.WriteLine("           **PLAN PAGO**              ");
+            Console.Write($"\nCliente: {Cliente}");
+            Console.Write($"\nId prestamo: {IdPrestamo}");
+            Console.Write($"\nValor del prestamo: {VlrPrestamo}");
+            Console.Write($"\nInteres: {Interes}");
+            Console.Write($"\nPlazo: {Plazo}");
+            Console.WriteLine("\n----------------------------------------");
+        }
+    }
+}
+
